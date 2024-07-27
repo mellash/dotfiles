@@ -1,7 +1,12 @@
 -- Disabling netrw banner
 vim.g.netrw_banner = 0
 -- Number line
-vim.opt.nu = true
+vim.opt.number = true
+vim.opt.numberwidth = 3
+
+-- Giving space for errors
+vim.cmd("set signcolumn=yes")
+
 -- Tab width
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -9,6 +14,11 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 
+-- Trail and space character
+vim.opt.list = true
+vim.o.listchars = "trail:.,space:."
+
+-- Enables 24-bit RGB color
 vim.opt.termguicolors = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
@@ -23,15 +33,18 @@ vim.opt.hlsearch = true
 
 -- Show which line your cursor is on
 vim.opt.cursorline = true
+vim.cmd("set cursorlineopt=number")
 
 -- Colorshceme
+vim.g.gruvbox_material_background="hard"
+vim.g.gruvbox_material_foreground="original"
+vim.g.gruvbox_material_enable_italic = true
 vim.cmd("colorscheme gruvbox-material")
 
 -- Word line break
 vim.opt.linebreak = true
 
 -- Neovim terminal
-vim.api.nvim_command("autocmd TermOpen * startinsert")             -- starts in insert mode
-vim.api.nvim_command("autocmd TermOpen * setlocal nonumber")       -- no numbers
-vim.api.nvim_command("autocmd TermEnter * setlocal signcolumn=no") -- no sign column
-vim.keymap.set('t', '<esc>', "<C-\\><C-n>")
+vim.api.nvim_command("autocmd TermOpen * startinsert")
+vim.api.nvim_command("autocmd TermOpen * setlocal nonumber")
+vim.api.nvim_command("autocmd TermEnter * setlocal signcolumn=no")
