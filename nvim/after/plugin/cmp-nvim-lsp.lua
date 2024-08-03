@@ -1,34 +1,35 @@
-local cmp = require'cmp'
+local cmp = require 'cmp'
 
 local cmp_kinds = {
-  Text = ' ',
-  Method = ' ',
-  Function = ' ',
-  Constructor = ' ',
-  Field = ' ',
-  Variable = ' ',
-  Class = ' ',
-  Interface = ' ',
-  Module = ' ',
-  Property = ' ',
-  Unit = ' ',
-  Value = ' ',
-  Enum = ' ',
-  Keyword = ' ',
-  Snippet = ' ',
-  Color = ' ',
-  File = ' ',
-  Reference = ' ',
-  Folder = ' ',
-  EnumMember = ' ',
-  Constant = ' ',
-  Struct = ' ',
-  Event = ' ',
-  Operator = ' ',
-  TypeParameter = ' ',
+    Text = ' ',
+    Method = ' ',
+    Function = ' ',
+    Constructor = ' ',
+    Field = ' ',
+    Variable = ' ',
+    Class = ' ',
+    Interface = ' ',
+    Module = ' ',
+    Property = ' ',
+    Unit = ' ',
+    Value = ' ',
+    Enum = ' ',
+    Keyword = ' ',
+    Snippet = ' ',
+    Color = ' ',
+    File = ' ',
+    Reference = ' ',
+    Folder = ' ',
+    EnumMember = ' ',
+    Constant = ' ',
+    Struct = ' ',
+    Event = ' ',
+    Operator = ' ',
+    TypeParameter = ' ',
 }
 
 cmp.setup({
+
     snippet = {
         -- REQUIRED - you must specify a snippet engine
         -- expand = function(args)
@@ -49,7 +50,7 @@ cmp.setup({
             vim_item.kind = cmp_kinds[vim_item.kind] or ""
             return vim_item
         end,
-    },    
+    },
     mapping = cmp.mapping.preset.insert({
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -78,7 +79,7 @@ cmp.setup({
         { name = 'buffer' },
     })
 })
-require("cmp_git").setup() ]]-- 
+require("cmp_git").setup() ]] --
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 -- cmp.setup.cmdline({ '/', '?' }, {
@@ -103,31 +104,33 @@ require("cmp_git").setup() ]]--
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- Python
 require('lspconfig')['pyright'].setup {
-    cmd = {"/home/mellash/.npm-global/bin/pyright-langserver", "--stdio"},
+    cmd = { "/home/mellash/.npm-global/bin/pyright-langserver", "--stdio" },
     capabilities = capabilities
 }
 -- JavaScript
 require('lspconfig')['tsserver'].setup {
-    cmd = {"/home/mellash/.npm-global/bin/typescript-language-server", "--stdio"},
+    cmd = { "/home/mellash/.npm-global/bin/typescript-language-server", "--stdio" },
     capabilities = capabilities
 }
 -- Go
 require('lspconfig')['gopls'].setup {}
 -- Emmet
 require('lspconfig')['emmet_ls'].setup {
-    cmd = {"/home/mellash/.npm-global/bin/emmet-ls", "--stdio"},
+    cmd = { "/home/mellash/.npm-global/bin/emmet-ls", "--stdio" },
     capabilities = capabilities
 
 }
 -- Rust
-require'lspconfig'.rust_analyzer.setup{}
+require 'lspconfig'.rust_analyzer.setup {}
 -- C/C++
-require('lspconfig')['clangd'].setup{}
+require('lspconfig')['clangd'].setup {}
+-- Lua
+require 'lspconfig'.lua_ls.setup {}
 
 
 -- Error signs
 local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
 for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end

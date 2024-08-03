@@ -2,13 +2,12 @@ require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'gruvbox-material',
-    -- component_separators = { left = '', right = ''},
-    -- section_separators = { left = '', right = ''},
-    section_separators = { left = '', right = '' },
-    component_separators = { left = '', right = '' },
+    section_separators = { left = '❩', right = '❨' },
+    component_separators = { left = '❩', right = '❨' },
 
     disabled_filetypes = {
       statusline = {},
+
       winbar = {},
     },
     ignore_focus = {},
@@ -23,10 +22,18 @@ require('lualine').setup {
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_c = {
+      {
+        'filename',
+        path = 1, -- 2 for full path
+        symbols = {
+          modified = "●",
+        }
+      }
+    },
+    lualine_x = {'encoding'},
     lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_z = {'location'},
   },
   inactive_sections = {
     lualine_a = {},
@@ -39,5 +46,5 @@ require('lualine').setup {
   tabline = {},
   winbar = {},
   inactive_winbar = {},
-  extensions = {},
+  extensions = {"neo-tree"},
 }

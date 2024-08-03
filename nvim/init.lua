@@ -1,3 +1,3 @@
-require("config/init")
-require("config/keymap")
-require("packer")
+require("config/options")
+require("config/keymaps")
+require("plugin/packer")

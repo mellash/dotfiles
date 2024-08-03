@@ -1,18 +1,35 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup(function(use)
+return require("packer").startup(function(use)
   -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
-  use 'sainnhe/gruvbox-material'
+  use "wbthomason/packer.nvim"
+  -- Material gruvbox for life
+  use "sainnhe/gruvbox-material"
+  -- Lualine for beautiful status
+  use "nvim-lualine/lualine.nvim"
+  -- For indent guide
+  use "lukas-reineke/indent-blankline.nvim"
+  -- Show nice tab instead of the default
+  use "akinsho/bufferline.nvim"
+  -- Nice explorer
   use {
-  'nvim-lualine/lualine.nvim',
-  requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v4.x",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+    }
   }
+  -- For finding things in light speed
+  use {"nvim-telescope/telescope.nvim", tag = "1.1.8"}
+  -- Cool icons for neovim
+  use "nvim-tree/nvim-web-devicons"
+  -- Autopairs ""''{}()``
   use "windwp/nvim-autopairs"
+  -- Git signs
   use "lewis6991/gitsigns.nvim"
+  -- LSP
   use "neovim/nvim-lspconfig"
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-buffer"

@@ -17,4 +17,6 @@ padding.y = 0
 dynamic_padding = false
 
 [font]
-normal = { family = "Source Code Pro", style="Regular" }
+# normal = { family = "Sauce Code Pro Nerd Font Mono", style="Medium" }
+normal = { family = "Cascadia Code", style="Semilight" }
+
