@@ -4,6 +4,7 @@ vim.g.mapleader = " "
 vim.keymap.set("i", "jj", "<ESC>")
 -- CTRL+s to save file
 vim.keymap.set("i", "<C-s>", "<ESC>:w<CR>")
+vim.keymap.set("n", "<C-s>", "<ESC>:w<CR>")
 
 -- Open neotree with <leader>e
 vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>")
