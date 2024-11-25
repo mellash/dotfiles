@@ -2,7 +2,7 @@ require("bufferline").setup{
   options = {
     show_buffer_icons = true,
     show_close_icon = false,
-    always_show_bufferline = false,
+    always_show_bufferline = true,
     auto_toggle_bufferline = true,
     mode = "tabs",
     numbers = "none",
