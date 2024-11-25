@@ -29,33 +29,12 @@ require('neo-tree').setup({
       highlight = "NeoTreeModified",
     },
     diagnostics = {
-      symbols = {
-        hint = "󰌶 ",
-        info = " ",
-        warn = "󰀪 ",
-        error = "󰅚 ",
-      },
-      highlight = {
-        hint = "DiagnosticSignHint",
-        info = "DiagnosticSignInfo",
-        warn = "DiagnosticSignWarn",
-        error = "DiagnosticSignError",
-      }
     },
-    git_status = {
-      symbols = {
-        -- Change type
-        added = "",
-        deleted = "",
-        modified = "",
-        renamed = "",
-        -- Status type
-        untracked = "",
-        ignored = "",
-        unstaged = "",
-        staged = "",
-        conflict = "",
-      },
-    },
+    highlight = {
+      hint = "DiagnosticSignHint",
+      info = "DiagnosticSignInfo",
+      warn = "DiagnosticSignWarn",
+      error = "DiagnosticSignError",
+    }
   },
 })
