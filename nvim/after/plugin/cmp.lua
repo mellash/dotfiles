@@ -1,32 +1,6 @@
 local cmp = require 'cmp'
+luasnip = require 'lualine'
 
-local cmp_kinds = {
-  Text = ' ',
-  Method = ' ',
-  Function = ' ',
-  Constructor = ' ',
-  Field = ' ',
-  Variable = ' ',
-  Class = ' ',
-  Interface = ' ',
-  Module = ' ',
-  Property = ' ',
-  Unit = ' ',
-  Value = ' ',
-  Enum = ' ',
-  Keyword = ' ',
-  Snippet = ' ',
-  Color = ' ',
-  File = ' ',
-  Reference = ' ',
-  Folder = ' ',
-  EnumMember = ' ',
-  Constant = '󰏿',
-  Struct = ' ',
-  Event = ' ',
-  Operator = ' ',
-  TypeParameter = ' ',
-}
 
 cmp.setup({
   window = {
@@ -34,23 +8,19 @@ cmp.setup({
     -- documentation = cmp.config.window.bordered(),
   },
   formatting = {
-    fields = { "kind", "abbr" },
-    format = function(_, vim_item)
-      vim_item.kind = cmp_kinds[vim_item.kind] or ""
-      return vim_item
-    end,
+    fields = { "abbr", "kind" },
   },
   mapping = cmp.mapping.preset.insert({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<C-y>'] = cmp.mapping.confirm({ select = true })
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
+    { name = 'luasnip' },
     -- { name = 'vsnip' }, -- For vsnip users.
-    -- { name = 'luasnip' }, -- For luasnip users.
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
   }, {
@@ -68,7 +38,7 @@ require('lspconfig')['pyright'].setup {
   capabilities = capabilities
 }
 -- JavaScript
-require('lspconfig')['tsserver'].setup {
+require('lspconfig')['ts_ls'].setup {
   cmd = { "/home/mellash/.npm-global/bin/typescript-language-server", "--stdio" },
   capabilities = capabilities
 }
@@ -84,13 +54,35 @@ require 'lspconfig'.rust_analyzer.setup {}
 -- C/C++
 require('lspconfig')['clangd'].setup {}
 -- Lua
-require 'lspconfig'.lua_ls.setup {}
+require 'lspconfig'.lua_ls.setup {
+  settings = {
+    Lua = {
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = { 'vim' },
+      },
+    },
+  },
+}
+-- CSS
+--Enable (broadcasting) snippet capability for completion
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+require 'lspconfig'.cssls.setup {
+  capabilities = capabilities,
+}
+-- HTML
+--Enable (broadcasting) snippet capability for completion
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- Error signs
-local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
-
+require 'lspconfig'.html.setup {
+  capabilities = capabilities,
+}
+-- TailwindCSS
+require 'lspconfig'.tailwindcss.setup {}
+-- Svelte
+require 'lspconfig'.svelte.setup {}
+-- Java
+require 'lspconfig'.jdtls.setup {}
