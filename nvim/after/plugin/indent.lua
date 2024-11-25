@@ -6,6 +6,9 @@ require("ibl").setup({
     char = "▏",
   },
   scope = {
-    enabled = false,
+    enabled = true,
+    show_start = true,
+    show_end = true,
+    show_exact_scope = true,
   },
 })
