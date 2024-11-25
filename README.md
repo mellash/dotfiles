@@ -4,4 +4,4 @@
 - Fish as a shell
 - Neovim as teminal text editor
 - Tmux as a terminal multiplexer
-- Alacritty as a teminal
+- Alacritty as a terminal
