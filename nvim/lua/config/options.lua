@@ -2,6 +2,9 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- Hide cmd while typing
+vim.opt.cmdheight = 0
+
 -- Number line
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -72,7 +75,6 @@ vim.opt.hlsearch = true
 
 -- Show which line your cursor is on
 vim.opt.cursorline = true
-vim.cmd("set cursorlineopt=number")
 
 -- Colorshceme
 vim.g.gruvbox_material_background="hard"
@@ -88,3 +90,4 @@ vim.api.nvim_command("autocmd TermOpen * startinsert")
 vim.api.nvim_command("autocmd TermOpen * setlocal nonumber")
 vim.api.nvim_command("autocmd TermOpen * setlocal norelativenumber")
 vim.api.nvim_command("autocmd TermEnter * setlocal signcolumn=no")
+
