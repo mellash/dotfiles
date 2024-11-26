@@ -17,10 +17,10 @@ vim.keymap.set("n", "<S-Tab>", ":tabprevious<CR>")
 -- Quite with CTRL+q
 vim.keymap.set("n", "<C-q>", "<ESC>:q<CR>")
 -- Cut line with CTRL+x
-vim.keymap.set("n", "<C-x>", "dd", opts)
+vim.keymap.set("n", "<C-x>", "dd")
 -- Normal movement with gj and gk instead of j and k
-vim.keymap.set("n", "j", "gj", opts)
-vim.keymap.set("n", "k", "gk", opts)
+vim.keymap.set("n", "j", "gj")
+vim.keymap.set("n", "k", "gk")
 -- Remove highlight with <ESC>
 vim.keymap.set("n", "<ESC>", "<cmd>nohlsearch<CR>")
 -- Open terminal with CTRL+\
@@ -38,3 +38,8 @@ vim.keymap.set('n', '<C-d>', '<ESC>:lua vim.lsp.buf.definition()<CR>')
 vim.keymap.set('t', '<ESC>', "<C-\\><C-n>")
 -- CTRL+k to jump up to the upper window
 vim.keymap.set('t', '<C-k>', "<C-\\><C-n><C-w><C-k>")
+
+-- Renames all references to the symbol under the cursor
+vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
+-- Show diagnostics in a floating window
+vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
