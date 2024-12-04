@@ -15,8 +15,8 @@ require('lualine').setup {
   sections = {
     lualine_a = { 'mode' },
     lualine_b = { 'branch', 'diff', 'diagnostics', 'diagnosticscount' },
-    lualine_c = { 'filesize', 'searchcount' },
-    lualine_x = { 'encoding', 'fileformat', 'filetype' },
+    lualine_c = { 'filesize', },
+    lualine_x = { 'searchcount', 'encoding', 'fileformat', 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location' }
   },
