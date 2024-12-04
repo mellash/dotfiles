@@ -7,13 +7,17 @@ vim.keymap.set("i", "<C-s>", "<ESC>:w<CR>")
 vim.keymap.set("n", "<C-s>", "<ESC>:w<CR>")
 
 -- Open neotree with <leader>e
-vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>")
+vim.keymap.set("n", "<leader>e", ":Neotree toggle reveal<CR>")
 -- Open neotree with in float mode with <leader>E
 vim.keymap.set("n", "<leader>E", ":Neotree float toggle<CR>")
+-- Open buffer window of neotree
+vim.keymap.set("n", "<leader>b", ":Neotree action=show source=buffers position=left toggle=true focus<CR>")
+-- Pin buffer
+vim.keymap.set("n", "<leader>p", ":BufferLineTogglePin<CR>")
 -- Go to the next tab with <Tab>
-vim.keymap.set("n", "<Tab>", ":tabnext<CR>")
+vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>")
 -- Go to the previous tab with Shift+Tab
-vim.keymap.set("n", "<S-Tab>", ":tabprevious<CR>")
+vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>")
 -- Quite with CTRL+q
 vim.keymap.set("n", "<C-q>", "<ESC>:q<CR>")
 -- Cut line with CTRL+x
@@ -34,7 +38,7 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>')
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>')
 vim.keymap.set('n', '<C-d>', '<ESC>:lua vim.lsp.buf.definition()<CR>')
 
--- Use <ESC> in terminal 
+-- Use <ESC> in terminal
 vim.keymap.set('t', '<ESC>', "<C-\\><C-n>")
 -- CTRL+k to jump up to the upper window
 vim.keymap.set('t', '<C-k>', "<C-\\><C-n><C-w><C-k>")
