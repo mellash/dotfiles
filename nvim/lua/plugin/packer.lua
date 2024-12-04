@@ -6,8 +6,6 @@ return require("packer").startup(function(use)
   use "wbthomason/packer.nvim"
   -- Material gruvbox for life
   use "sainnhe/gruvbox-material"
-  -- Using Packer
-  use 'navarasu/onedark.nvim'
   -- Lualine for beautiful status
   use "nvim-lualine/lualine.nvim"
   -- For indent guide
@@ -26,7 +24,7 @@ return require("packer").startup(function(use)
     }
   }
   -- For finding things in light speed
-  use {"nvim-telescope/telescope.nvim", tag = "1.1.8"}
+  use { "nvim-telescope/telescope.nvim", tag = "1.1.8" }
   -- Cool icons for neovim
   use "nvim-tree/nvim-web-devicons"
   -- Autopairs
