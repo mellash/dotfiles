@@ -1,5 +1,5 @@
 # Changing default prompt to scales
-fish_config prompt choose scales
+fish_config prompt choose arrow
 
 # No more welcoming message
 set -g fish_greeting ""
@@ -27,13 +27,23 @@ function fish_mode_prompt
 end
 
 # Aliases
-alias vi="nvim"
+alias vim="nvim"
 alias rm="rm -i"
+alias reload="source ~/.config/fish/config.fish"
+alias rmrf="rm -rfi"
+alias cdw="cd ~/work/"
+alias cdn="cd ~/work/notes/"
+alias cdgit="cd ~/work/codes/github/"
+alias cdjs="cd ~/work/codes/js/"
+alias cdcode="cd ~/work/codes/"
+alias cdhone="cd ~/work/hackerone/"
 
 # export PATH=~/.npm-global/bin:$PATH
 set -gx PATH /home/mellash/.npm-global/bin $PATH
 # export PATH=~/go/bin:$PATH
 set -gx PATH /home/mellash/go/bin $PATH
+# export PATH=/opt/idea/bin/
+# set -gx PATH /opt/idea/bin $PATH
 
 # export for burp to work correctly
 set -gx _JAVA_AWT_WM_NONREPARENTING 1
