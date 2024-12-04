@@ -5,6 +5,9 @@ vim.g.loaded_netrwPlugin = 1
 -- Hide cmd while typing
 vim.opt.cmdheight = 0
 
+-- Disable diagnostic
+vim.diagnostic.config({ virtual_text = false })
+
 -- Number line
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -40,8 +43,8 @@ vim.opt.ruler = false
 -- No ~  character
 vim.opt.fillchars = { eob = " " }
 
--- Pop up menu height 
-vim.opt.pumheight = 10 -- 
+-- Pop up menu height
+vim.opt.pumheight = 10 --
 
 -- Show signcolumn
 vim.cmd("set signcolumn=yes")
@@ -77,8 +80,8 @@ vim.opt.hlsearch = true
 vim.opt.cursorline = true
 
 -- Colorshceme
-vim.g.gruvbox_material_background="hard"
-vim.g.gruvbox_material_foreground="original"
+vim.g.gruvbox_material_background = "hard"
+vim.g.gruvbox_material_foreground = "original"
 vim.g.gruvbox_material_enable_italic = true
 vim.cmd("colorscheme gruvbox-material")
 
@@ -90,4 +93,3 @@ vim.api.nvim_command("autocmd TermOpen * startinsert")
 vim.api.nvim_command("autocmd TermOpen * setlocal nonumber")
 vim.api.nvim_command("autocmd TermOpen * setlocal norelativenumber")
 vim.api.nvim_command("autocmd TermEnter * setlocal signcolumn=no")
-
