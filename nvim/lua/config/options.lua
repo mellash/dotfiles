@@ -19,6 +19,14 @@ vim.opt.updatetime = 60
 -- Encoding
 vim.opt.encoding = "utf-8"
 
+-- Tab and Trail
+vim.opt.list = true
+vim.opt.listchars = {
+  tab = " ▏",
+  trail = "•"
+}
+
+
 -- Mostly just for cmp
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
