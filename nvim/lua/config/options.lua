@@ -5,6 +5,11 @@ vim.g.loaded_netrwPlugin = 1
 -- Hide cmd while typing
 vim.opt.cmdheight = 0
 
+-- No commenting while typing on Inster mode
+vim.opt.formatoptions:remove('r')
+-- No commenting while typing on Noraml mode
+vim.opt.formatoptions:remove('o')
+
 -- Disable diagnostic
 vim.diagnostic.config({ virtual_text = false })
 
