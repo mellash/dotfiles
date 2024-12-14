@@ -1,3 +1,6 @@
+-- Add this to options.lua
+print("options.lua loaded")
+
 -- Disable netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -5,10 +8,14 @@ vim.g.loaded_netrwPlugin = 1
 -- Hide cmd while typing
 vim.opt.cmdheight = 0
 
--- No commenting while typing on Inster mode
-vim.opt.formatoptions:remove('r')
--- No commenting while typing on Noraml mode
-vim.opt.formatoptions:remove('o')
+-- Force formatoptions settings on buffer load
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    vim.opt.formatoptions:remove("r")
+    vim.opt.formatoptions:remove("o")
+  end,
+})
+
 
 -- Disable diagnostic
 vim.diagnostic.config({ virtual_text = false })
