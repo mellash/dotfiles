@@ -1,4 +1,4 @@
-require'nvim-web-devicons'.setup {
-  strict = true;
-  default = true;
+require 'nvim-web-devicons'.setup {
+  strict = true,
+  default = true,
 }
