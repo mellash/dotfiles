@@ -19,7 +19,7 @@ vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>")
 -- Go to the previous tab with Shift+Tab
 vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>")
 -- Quite with CTRL+q
-vim.keymap.set("n", "<C-q>", "<ESC>:q<CR>")
+vim.keymap.set("n", "<C-q>", "<ESC>:bd<CR>")
 -- Cut line with CTRL+x
 vim.keymap.set("n", "<C-x>", "dd")
 -- Normal movement with gj and gk instead of j and k
