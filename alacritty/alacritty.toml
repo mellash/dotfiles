@@ -1,7 +1,3 @@
-general.import = [
-	"~/.config/alacritty/themes/themes/gruvbox_dark.toml"
-]
-
 [env]
 TERM = "xterm-256color"
 
@@ -17,4 +13,5 @@ padding.y = 0
 dynamic_padding = false
 
 [font]
-normal = { family = "JetBrains Mono Nerd Font Mono", style="Regular"}
+normal = { family = "Hack Nerd Font"}
+size = 10
