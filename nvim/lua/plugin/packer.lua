@@ -4,16 +4,22 @@ vim.cmd [[packadd packer.nvim]]
 return require("packer").startup(function(use)
   -- Packer can manage itself
   use "wbthomason/packer.nvim"
-  -- Material gruvbox for life
-  use "sainnhe/gruvbox-material"
+  -- Mellow theme
+  use("mellow-theme/mellow.nvim")
+  -- Indent lines
+  use "lukas-reineke/indent-blankline.nvim"
+  -- Treesitter
+  use {
+    'nvim-treesitter/nvim-treesitter',
+  }
+  -- Vim be good
+  use "ThePrimeagen/vim-be-good"
+  -- Github copilte
+  use "github/copilot.vim"
   -- Lualine for beautiful status
   use "nvim-lualine/lualine.nvim"
-  -- For indent guide
-  use "lukas-reineke/indent-blankline.nvim"
   -- Show nice tab instead of the default
   use "akinsho/bufferline.nvim"
-  -- Tree setter
-  use 'nvim-treesitter/nvim-treesitter'
   -- Nice explorer
   use {
     "nvim-neo-tree/neo-tree.nvim",
@@ -38,6 +44,7 @@ return require("packer").startup(function(use)
       require("conform").setup()
     end,
   })
+  -- LSP config
   use "neovim/nvim-lspconfig"
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-buffer"
