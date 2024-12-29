@@ -28,6 +28,7 @@ end
 
 # Aliases
 alias vim="nvim"
+alias vi="/bin/vim"
 alias rm="rm -i"
 alias reload="source ~/.config/fish/config.fish"
 alias rmrf="rm -rfi"
@@ -37,6 +38,8 @@ alias cdgit="cd ~/work/codes/github/"
 alias cdjs="cd ~/work/codes/js/"
 alias cdcode="cd ~/work/codes/"
 alias cdhone="cd ~/work/hackerone/"
+alias record='ffmpeg -f x11grab -s 1366x768 -i :0.0 -vcodec libx264 -crf 23 -preset fast -acodec aac -b:a 128k'
+alias time-et="curl https://time.et/ -s | grep -Eo '>[0-9]{2}<' | tr -d '<>' | paste -sd:"
 
 # export PATH=~/.npm-global/bin:$PATH
 set -gx PATH /home/mellash/.npm-global/bin $PATH
