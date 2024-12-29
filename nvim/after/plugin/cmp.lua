@@ -1,14 +1,41 @@
 local cmp = require 'cmp'
-luasnip = require 'lualine'
+
+local cmp_kinds = {
+  Text = ' ',
+  Method = ' ',
+  Function = ' ',
+  Constructor = ' ',
+  Field = ' ',
+  Variable = ' ',
+  Class = ' ',
+  Interface = ' ',
+  Module = ' ',
+  Property = ' ',
+  Unit = ' ',
+  Value = ' ',
+  Enum = ' ',
+  Keyword = ' ',
+  Snippet = ' ',
+  Color = ' ',
+  File = ' ',
+  Reference = ' ',
+  Folder = ' ',
+  EnumMember = ' ',
+  Constant = '󰏿',
+  Struct = ' ',
+  Event = ' ',
+  Operator = ' ',
+  TypeParameter = ' ',
+}
 
 
 cmp.setup({
-  window = {
-    -- completion = cmp.config.window.bordered(),
-    -- documentation = cmp.config.window.bordered(),
-  },
   formatting = {
-    fields = { "abbr", "kind" },
+    -- Format to show cmp_kinds icons,and abbrivations.
+    format = function(_, vim_item)
+      vim_item.kind = cmp_kinds[vim_item.kind] .. " " .. vim_item.kind
+      return vim_item
+    end,
   },
   mapping = cmp.mapping.preset.insert({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -29,31 +56,48 @@ cmp.setup({
   })
 })
 
+-- Showing sings for error, warning, hint and info.
+local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
 
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
--- Python
+
+
+-- Python (pyright) lsp
 require('lspconfig')['pyright'].setup {
   cmd = { "/home/mellash/.npm-global/bin/pyright-langserver", "--stdio" },
   capabilities = capabilities
 }
--- JavaScript
+
+
+-- JavaScript (tsserver) lsp
 require('lspconfig')['ts_ls'].setup {
   cmd = { "/home/mellash/.npm-global/bin/typescript-language-server", "--stdio" },
   capabilities = capabilities
 }
--- Go
+
+
+-- Go (gopls) lsp
 require('lspconfig')['gopls'].setup {}
--- Emmet
+
+
+-- Emmet lsp
 require('lspconfig')['emmet_ls'].setup {
   cmd = { "/home/mellash/.npm-global/bin/emmet-ls", "--stdio" },
   capabilities = capabilities
 }
--- Rust
-require 'lspconfig'.rust_analyzer.setup {}
--- C/C++
+
+
+-- C/C++ (clangd) lsp
 require('lspconfig')['clangd'].setup {}
--- Lua
+
+
+-- Lua (lua-language-server) lsp
 require 'lspconfig'.lua_ls.setup {
   settings = {
     Lua = {
@@ -64,25 +108,23 @@ require 'lspconfig'.lua_ls.setup {
     },
   },
 }
--- CSS
+
+
+-- CSS (cssls) lsp
 --Enable (broadcasting) snippet capability for completion
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 require 'lspconfig'.cssls.setup {
   capabilities = capabilities,
 }
--- HTML
+
+
+-- HTML (html) lsp
 --Enable (broadcasting) snippet capability for completion
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 require 'lspconfig'.html.setup {
   capabilities = capabilities,
 }
--- TailwindCSS
-require 'lspconfig'.tailwindcss.setup {}
--- Svelte
-require 'lspconfig'.svelte.setup {}
--- Java
-require 'lspconfig'.jdtls.setup {}
