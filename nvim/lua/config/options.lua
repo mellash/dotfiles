@@ -13,7 +13,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end,
 })
 
-
 -- Disable diagnostic
 vim.diagnostic.config({ virtual_text = false })
 
@@ -32,7 +31,8 @@ vim.opt.encoding = "utf-8"
 vim.opt.list = true
 vim.opt.listchars = {
   tab = " ▏",
-  trail = "•"
+  trail = "•",
+  -- eol = "¬"
 }
 
 
@@ -61,7 +61,7 @@ vim.opt.ruler = false
 vim.opt.fillchars = { eob = " " }
 
 -- Pop up menu height
-vim.opt.pumheight = 10 --
+vim.opt.pumheight = 10
 
 -- Show signcolumn
 vim.cmd("set signcolumn=yes")
@@ -97,10 +97,8 @@ vim.opt.hlsearch = true
 vim.opt.cursorline = true
 
 -- Colorshceme
-vim.g.gruvbox_material_background = "hard"
-vim.g.gruvbox_material_foreground = "original"
-vim.g.gruvbox_material_enable_italic = true
-vim.cmd("colorscheme gruvbox-material")
+vim.cmd("colorscheme mellow")
+
 
 -- Word line break
 vim.opt.linebreak = true
